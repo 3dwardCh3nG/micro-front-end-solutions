@@ -6,7 +6,7 @@ declare global {
 
 interface Dispatch {
   type: string; 
-  text: string
+  text?: string
 }
 
 interface Store {
@@ -29,6 +29,10 @@ export class AppComponent {
 
   ngOnInit () {
     window.store.subscribe(this.update.bind(this))
+  }
+
+  ngAfterViewInit() {
+    window.store.dispatch({type: 'ANGULAR_READY'})
   }
 
   update() {

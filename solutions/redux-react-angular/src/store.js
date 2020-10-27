@@ -27,9 +27,24 @@ function counter(state, action) {
     }
   }
 
+  function loaded(state,action) {
+    if (!state ) {
+      return {}
+    }
+
+    switch (action.type) {
+      case 'ANGULAR_READY':
+        return {...state, angular: true} 
+
+      default:
+        return state
+    }
+  }
+
 const rootReducer = Redux.combineReducers({
   counter,
-  message
+  message,
+  loaded
 })  
 
 var store = Redux.createStore(

@@ -5,7 +5,7 @@ import App from './app.js';
 
 
 const render = () => {
-  if(store.getState().message.text.length < 3) {
+  if(!store.getState().loaded.angular) {
     return
   }
   ReactDOM.render(
